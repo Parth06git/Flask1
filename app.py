@@ -58,4 +58,4 @@ def Update(Sno):
     return render_template('update.html', todo = todo)
 
 if __name__=="__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=True)
