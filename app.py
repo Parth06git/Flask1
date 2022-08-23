@@ -11,7 +11,7 @@ class Todo(db.Model):
     Sno = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(2000), nullable=False)
     desc = db.Column(db.String(2000), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    dea = db.Column(db.String(2000), nullable=False)
 
     def __repr__(self) -> str:
         return f"{self.Sno} - {self.title}"
@@ -22,7 +22,8 @@ def hello_world():
     if request.method == "POST":
         title=request.form['title']
         desc = request.form['desc']
-        todo = Todo(title=title, desc=desc)
+        dea = request.form['dea']
+        todo = Todo(title=title, desc=desc, dea=dea)
         db.session.add(todo)
         db.session.commit()
     allTodo = Todo.query.all()
@@ -47,9 +48,11 @@ def Update(Sno):
     if request.method=='POST':
         title=request.form['title']
         desc = request.form['desc']
+        dea = request.form['dea']
         todo = Todo.query.filter_by(Sno=Sno).first()
         todo.title = title
         todo.desc = desc
+        todo.dea = dea
         db.session.add(todo)
         db.session.commit()
         return redirect("/")
