@@ -60,5 +60,4 @@ def Update(Sno):
     todo = Todo.query.filter_by(Sno=Sno).first()
     return render_template('update.html', todo = todo)
 
-if __name__=="__main__":
-    app.run(debug=True)
+
