@@ -1,5 +1,4 @@
 from datetime import datetime
-from turtle import title
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
@@ -61,3 +60,7 @@ def Update(Sno):
     return render_template('update.html', todo = todo)
 
 
+
+if __name__ == "__main__":
+    from os import environ
+    app.run(debug=False,host='0.0.0.0',port=environ.get("PORT", 5000))
